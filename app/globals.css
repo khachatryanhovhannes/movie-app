@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #000000;
+body {
+  background: black;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  33.33% {
+    transform: translateX(-100%);
+  }
+  66.66% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide {
+  animation: slide 9s infinite;
 }
