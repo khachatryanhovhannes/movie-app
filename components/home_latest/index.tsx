@@ -9,7 +9,12 @@ export default async function HomeLatest() {
 
   return (
     <section className=" py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
-      <h3 className="text-white text-2xl py-8">Upcoming Movies</h3>
+      <div className=" pt-8 pb-2 flex justify-between items-end">
+        <h3 className="text-white text-2xl">Upcoming Movies</h3>
+        <div className="text-red-600 underline underline-offset-4">
+          <Link href="">More...</Link>
+        </div>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {recentlyMovies.map((movie) => (
           <div
@@ -35,7 +40,7 @@ export default async function HomeLatest() {
                   <MdLanguage /> {movie.original_language}
                 </p>
               </div>
-              <div className="text-red-600">
+              <div className="text-red-600 underline underline-offset-4">
                 <Link href="">More...</Link>
               </div>
             </div>
