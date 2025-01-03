@@ -1,4 +1,4 @@
-import { HomeHero } from "@/components";
+import { HomeHero, HomeLatest } from "@/components";
 import { IGenre, IMovie } from "@/models";
 import { getGenres, getPopular } from "@/services/api";
 
@@ -7,9 +7,9 @@ export default async function Home() {
   const genres: IGenre[] = await getGenres();
 
   return (
-    <main className="bg-white">
+    <main>
       <HomeHero movies={movies} genres={genres} />
-      
+      <HomeLatest />
     </main>
   );
 }
