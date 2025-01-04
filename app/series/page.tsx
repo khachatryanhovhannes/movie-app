@@ -25,7 +25,7 @@ export default async function Series({ searchParams }: ISeriesPageProps) {
           <div className="flex flex-col gap-2">
             {genres.map((g) => (
               <Link
-                href={`/movies?genre=${g.id}&page=1`}
+                href={`/series?genre=${g.id}&page=1`}
                 key={g.id}
                 className={`${genre === g.id ? "text-red-500 font-bold" : ""}`}
               >
