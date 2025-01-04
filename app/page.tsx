@@ -12,7 +12,18 @@ export default async function Home() {
     <main>
       <HomeHero movies={movies} genres={genres} />
       <HomeLatest />
-      <HomeSections movies={topRated} title="Top Rated" url="" />
+      <HomeSections
+        movies={topRated}
+        title="Top Rated Movies"
+        url="/movies"
+        type="movies"
+      />
+      <HomeSections
+        movies={movies.slice(0, 4)}
+        title="Popular Movies"
+        url="/movies"
+        type="movies"
+      />
     </main>
   );
 }
