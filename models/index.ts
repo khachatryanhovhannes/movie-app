@@ -36,3 +36,8 @@ export interface ISerie {
   vote_average: number;
   vote_count: number;
 }
+
+export interface IMoviePageResult {
+  total_pages: number;
+  results: IMovie[];
+}

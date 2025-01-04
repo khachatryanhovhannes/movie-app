@@ -61,6 +61,7 @@ export default function HomeHero({ movies, genres }: IHomeHeroProps) {
                       color="black"
                       bgColor="white"
                       key={genre.id}
+                      href={`movies?genre=${genre.id}`}
                     />
                   ))}
                   <span className="flex items-center gap-2 text-sm md:text-base">
