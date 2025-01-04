@@ -1,7 +1,9 @@
-import { getTvGenres } from "@/services/api";
+import { Pagination, SeriesCard } from "@/components";
+import SmallButton from "@/components/small_button";
+import { getTvGenres, seriesPageGet } from "@/services/api";
 import Link from "next/link";
 
-interface IMoviesPageProps {
+interface ISeriesPageProps {
   searchParams: {
     distinctive?: "top_rated" | "popular" | "airing_today" | "on_the_air";
     page?: number;
@@ -9,10 +11,13 @@ interface IMoviesPageProps {
   };
 }
 
-export default async function Series({ searchParams }: IMoviesPageProps) {
+export default async function Series({ searchParams }: ISeriesPageProps) {
   const { distinctive = "popular", page = 1, genre } = await searchParams;
 
-  const [genres] = await Promise.all([getTvGenres()]);
+  const [series, genres] = await Promise.all([
+    seriesPageGet({ distinctive, page, genre }),
+    getTvGenres(),
+  ]);
   return (
     <main>
       <div className="grid grid-cols-5 py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32 text-white">
@@ -27,6 +32,62 @@ export default async function Series({ searchParams }: IMoviesPageProps) {
                 {g.name}
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section className="col-span-4">
+          <div className="flex justify-between">
+            <h2 className="text-2xl font-bold">
+              {distinctive.replace("_", " ").toUpperCase()} MOVIES
+            </h2>
+            <div className="flex gap-3">
+              <SmallButton
+                text="Popular"
+                bgColor="red"
+                color="white"
+                href="/series?distinctive=popular"
+              />
+              <SmallButton
+                text="Top Rated"
+                bgColor="red"
+                color="white"
+                href="/series?distinctive=top_rated"
+              />
+              <SmallButton
+                text="Airing Today"
+                bgColor="red"
+                color="white"
+                href="/series?distinctive=airing_today"
+              />
+              <SmallButton
+                text="On The Air"
+                bgColor="red"
+                color="white"
+                href="/series?distinctive=on_the_air"
+              />
+            </div>
+          </div>
+
+          {series.results.length > 0 ? (
+            <div className="grid grid-cols-4 gap-4 py-4">
+              {series.results.map((movie) => (
+                <SeriesCard key={movie.id} movie={movie} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center py-4 text-gray-400">
+              No movies found for this genre.
+            </p>
+          )}
+
+          <div>
+            <Pagination
+              page={page}
+              length={series.total_pages}
+              href={`/series?${genre ? "genre=" + genre : ""}${
+                distinctive ? "distinctive=" + distinctive : ""
+              }`}
+            />
           </div>
         </section>
       </div>
