@@ -33,7 +33,7 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
         {+page - 1 >= 1 && (
           <Link
             href={`${href}&page=${+page - 1}`}
-            className="text-2xl text-blue-500 bg-white
+            className="text-2xl text-red-600 bg-white
             } inline-block gap-1 p-1 rounded-lg border"
           >
             <MdKeyboardArrowLeft />
@@ -45,9 +45,9 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
             key={number}
             className={`${
               page == number
-                ? "bg-blue-500 text-white"
-                : "text-blue-500 bg-white"
-            } inline-block py-1 px-3 rounded-lg border hover:border-blue-500`}
+                ? "bg-red-600 text-white"
+                : "text-red-600 bg-white"
+            } inline-block py-1 px-3 rounded-lg border hover:border-red-600`}
             href={`${href}&page=${number}`}
           >
             {number}
@@ -57,7 +57,7 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
         {+page + 1 <= totalPage && (
           <Link
             href={`${href}&page=${+page + 1}`}
-            className="text-2xl text-blue-500 bg-white
+            className="text-2xl text-red-600 bg-white
             } inline-block gap-1 p-1 rounded-lg border"
           >
             <MdKeyboardArrowRight />
