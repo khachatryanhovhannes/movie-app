@@ -86,7 +86,7 @@ export default async function Movies({ searchParams }: IMoviesPageProps) {
             <Pagination
               page={page}
               length={movies.total_pages}
-              href={`/movies?${genre ? "genre=" + genre : ""}${
+              href={`/series?${genre ? "genre=" + genre + "&" : ""}${
                 distinctive ? "distinctive=" + distinctive : ""
               }`}
             />
