@@ -6,6 +6,7 @@ import {
   getPopular,
   getPopularSeries,
   getTopRated,
+  getTopRatedSeries,
 } from "@/services/api";
 
 export default async function Home() {
@@ -13,6 +14,7 @@ export default async function Home() {
   const genres: IGenre[] = await getGenres();
   const topRated: IMovie[] = await getTopRated();
   const popularSeries: ISerie[] = await getPopularSeries();
+  const topRatedSeries: ISerie[] = await getTopRatedSeries();
 
   return (
     <main>
@@ -29,6 +31,12 @@ export default async function Home() {
         title="Popular Movies"
         url="/movies"
         type="movies"
+      />
+      <HomeSections
+        series={topRatedSeries}
+        title="Top Rated Series"
+        url="/series"
+        type="series"
       />
       <HomeSections
         series={popularSeries}
