@@ -113,3 +113,14 @@ export const getRecommendations = async (id: number) => {
     return [];
   }
 };
+
+export const getTvGenres = async () => {
+  try {
+    const res = await instance.get("genre/tv/list?language=en-US");
+
+    return res.data.genres as IGenre[];
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to fetch genres");
+  }
+};
