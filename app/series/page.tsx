@@ -84,7 +84,7 @@ export default async function Series({ searchParams }: ISeriesPageProps) {
             <Pagination
               page={page}
               length={series.total_pages}
-              href={`/series?${genre ? "genre=" + genre : ""}${
+              href={`/series?${genre ? "genre=" + genre + "&" : ""}${
                 distinctive ? "distinctive=" + distinctive : ""
               }`}
             />
