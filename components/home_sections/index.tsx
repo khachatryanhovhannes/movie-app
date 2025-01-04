@@ -7,10 +7,11 @@ interface IHomeSectionsProps {
   title: string;
   movies: IMovie[];
   url: string;
+  type: "series" | "movies";
 }
 
 export default function HomeSections({ ...props }: IHomeSectionsProps) {
-  const { title, movies, url } = props;
+  const { title, type, movies, url } = props;
 
   return (
     <section className=" py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
@@ -22,7 +23,7 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
         {movies.map((movie) => (
-          <Link href={`/movies/${movie.id}`} key={movie.id}>
+          <Link href={`/${type}/${movie.id}`} key={movie.id}>
             <div className="border-2 border-gray-600 rounded-md p-3">
               <div className="w-full relative aspect-[2/3]">
                 <Image
@@ -33,7 +34,7 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
                 />
               </div>
               <div
-                className="flex gap-1"
+                className="flex gap-1 mt-4"
                 aria-label={`Rating: ${movie.vote_average} out of 10`}
               >
                 {[1, 2, 3, 4, 5].map((i) => (
@@ -41,7 +42,7 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
                     key={i}
                     size={20}
                     color={movie.vote_average / 2 >= i ? "#ff9900" : "gray"}
-                    aria-hidden="true" // icons don't need to be read by screen readers
+                    aria-hidden="true"
                   />
                 ))}
               </div>
