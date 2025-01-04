@@ -11,6 +11,10 @@ export const NAV_ITEMS = [
     href: "/movies",
   },
   {
+    label: "Series",
+    href: "/series",
+  },
+  {
     label: "About",
     href: "/about",
   },
