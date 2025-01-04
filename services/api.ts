@@ -51,3 +51,13 @@ export const getPopularSeries = async () => {
     throw new Error("Failed to fetch genres");
   }
 };
+
+export const getTopRatedSeries = async () => {
+  try {
+    const res = await instance.get("tv/top_rated?language=en-US&page=1");
+    return res.data.results.slice(0, 4);
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to fetch genres");
+  }
+};
