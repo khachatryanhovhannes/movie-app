@@ -91,3 +91,13 @@ export const moviesPageGet = async ({
     };
   }
 };
+
+export const getSingleMovie = async (id: number) => {
+  try {
+    const res = await instance.get(`movie/${id}?language=en-US`);
+    return res.data;
+  } catch (err) {
+    console.error("Failed to fetch movie:", err);
+    throw new Error("Failed to fetch movie");
+  }
+};
