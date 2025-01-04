@@ -9,7 +9,7 @@ interface ISeriesCardProps {
 
 export default function SeriesCard({ movie }: ISeriesCardProps) {
   return (
-    <Link href={`/movies/${movie.id}`}>
+    <Link href={`/series/${movie.id}`}>
       <div className="border-2 border-gray-600 rounded-md p-3">
         <div className="w-full relative aspect-[2/3]">
           <Image
