@@ -23,13 +23,13 @@ export default async function Home() {
       <HomeSections
         movies={topRated}
         title="Top Rated Movies"
-        url="/movies"
+        url="/movies?distinctive=top_rated"
         type="movies"
       />
       <HomeSections
         movies={movies.slice(0, 4)}
         title="Popular Movies"
-        url="/movies"
+        url="/movies?distinctive=popular"
         type="movies"
       />
       <HomeSections

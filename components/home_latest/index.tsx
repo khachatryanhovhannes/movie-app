@@ -12,7 +12,7 @@ export default async function HomeLatest() {
       <div className=" pt-8 pb-2 flex justify-between items-end">
         <h3 className="text-white text-2xl">Upcoming Movies</h3>
         <div className="text-red-600 underline underline-offset-4">
-          <Link href="">More...</Link>
+          <Link href="/movies?distinctive=upcoming">More...</Link>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
