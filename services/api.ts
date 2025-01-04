@@ -101,3 +101,15 @@ export const getSingleMovie = async (id: number) => {
     throw new Error("Failed to fetch movie");
   }
 };
+
+export const getRecommendations = async (id: number) => {
+  try {
+    const res = await instance.get(
+      `movie/${id}/recommendations?language=en-US`
+    );
+    return res.data.results.slice(0, 8);
+  } catch (err) {
+    console.error("Failed to fetch recommendations:", err);
+    return [];
+  }
+};

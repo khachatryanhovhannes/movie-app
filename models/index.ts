@@ -67,7 +67,7 @@ export interface ISinglePageMovie {
     logo_path: string | null;
     name: string;
     origin_country: string;
-  };
+  }[];
   production_countries: {
     iso_3166_1: string;
     name: string;
