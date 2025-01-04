@@ -1,16 +1,18 @@
-import { IMovie } from "@/models";
+import { IMovie, ISerie } from "@/models";
 import Image from "next/image";
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 
 interface IHomeSectionsProps {
   title: string;
-  movies: IMovie[];
+  movies?: IMovie[];
+  series?: ISerie[];
   url: string;
+  type: "series" | "movies";
 }
 
 export default function HomeSections({ ...props }: IHomeSectionsProps) {
-  const { title, movies, url } = props;
+  const { title, type, movies, series, url } = props;
 
   return (
     <section className=" py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
@@ -21,34 +23,64 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
-        {movies.map((movie) => (
-          <Link href={`/movies/${movie.id}`} key={movie.id}>
-            <div className="border-2 border-gray-600 rounded-md p-3">
-              <div className="w-full relative aspect-[2/3]">
-                <Image
-                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                  alt={movie.title}
-                  fill
-                  objectFit="cover"
-                />
-              </div>
-              <div
-                className="flex gap-1"
-                aria-label={`Rating: ${movie.vote_average} out of 10`}
-              >
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <FaStar
-                    key={i}
-                    size={20}
-                    color={movie.vote_average / 2 >= i ? "#ff9900" : "gray"}
-                    aria-hidden="true" // icons don't need to be read by screen readers
+        {movies &&
+          movies.map((movie) => (
+            <Link href={`/${type}/${movie.id}`} key={movie.id}>
+              <div className="border-2 border-gray-600 rounded-md p-3">
+                <div className="w-full relative aspect-[2/3]">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                    alt={movie.title}
+                    fill
+                    objectFit="cover"
                   />
-                ))}
+                </div>
+                <div
+                  className="flex gap-1 mt-4"
+                  aria-label={`Rating: ${movie.vote_average} out of 10`}
+                >
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <FaStar
+                      key={i}
+                      size={20}
+                      color={movie.vote_average / 2 >= i ? "#ff9900" : "gray"}
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <div className="py-4 text-white text-md">{movie.title}</div>
               </div>
-              <div className="py-4 text-white text-md">{movie.title}</div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        {series &&
+          series.map((ser) => (
+            <Link href={`/${type}/${ser.id}`} key={ser.id}>
+              <div className="border-2 border-gray-600 rounded-md p-3">
+                <div className="w-full relative aspect-[2/3]">
+                  <Image
+                    src={`https://image.tmdb.org/t/p/original${ser.poster_path}`}
+                    alt={ser.name}
+                    fill
+                    objectFit="cover"
+                  />
+                </div>
+                <div
+                  className="flex gap-1 mt-4"
+                  aria-label={`Rating: ${ser.vote_average} out of 10`}
+                >
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <FaStar
+                      key={i}
+                      size={20}
+                      color={ser.vote_average / 2 >= i ? "#ff9900" : "gray"}
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <div className="py-4 text-white text-md">{ser.name}</div>
+              </div>
+            </Link>
+          ))}
       </div>
     </section>
   );
