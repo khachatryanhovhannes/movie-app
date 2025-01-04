@@ -71,7 +71,7 @@ export default async function Movies({ searchParams }: IMoviesPageProps) {
           </div>
 
           {movies.results.length > 0 ? (
-            <div className="grid grid-cols-3 gap-4 py-4">
+            <div className="grid grid-cols-4 gap-4 py-4">
               {movies.results.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
