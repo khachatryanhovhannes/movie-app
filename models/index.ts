@@ -42,6 +42,11 @@ export interface IMoviePageResult {
   results: IMovie[];
 }
 
+export interface ISeriesPageResult {
+  total_pages: number;
+  results: ISerie[];
+}
+
 export interface ISinglePageMovie {
   adult: boolean;
   backdrop_path: string;

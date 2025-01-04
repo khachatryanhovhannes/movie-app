@@ -1,4 +1,4 @@
-import { IGenre, IMoviePageResult } from "@/models";
+import { IGenre, IMoviePageResult, ISeriesPageResult } from "@/models";
 import instance from ".";
 
 export const getPopular = async () => {
@@ -111,5 +111,45 @@ export const getRecommendations = async (id: number) => {
   } catch (err) {
     console.error("Failed to fetch recommendations:", err);
     return [];
+  }
+};
+
+export const getTvGenres = async () => {
+  try {
+    const res = await instance.get("genre/tv/list?language=en-US");
+
+    return res.data.genres as IGenre[];
+  } catch (err) {
+    console.error(err);
+    throw new Error("Failed to fetch genres");
+  }
+};
+
+export const seriesPageGet = async ({
+  distinctive,
+  page = 1,
+  genre,
+}: {
+  distinctive?: string;
+  page?: number;
+  genre?: number;
+}) => {
+  try {
+    const endpoint = genre ? "discover/tv" : `tv/${distinctive}`;
+    const query = new URLSearchParams({
+      language: "en-US",
+      page: page.toString(),
+    });
+
+    if (genre) query.append("with_genres", genre.toString());
+
+    const res = await instance.get(`${endpoint}?${query.toString()}`);
+    return res.data as ISeriesPageResult;
+  } catch (err) {
+    console.error("Failed to fetch movies:", err);
+    return {
+      total_pages: 0,
+      results: [],
+    };
   }
 };
