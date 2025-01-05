@@ -5,6 +5,37 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsStar } from "react-icons/bs";
 import { MdCalendarMonth, MdLanguage } from "react-icons/md";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Series | G Movies App",
+  description:
+    "Explore a wide range of TV series, including popular, top-rated, airing today, and on-the-air titles. Find your next favorite show to binge-watch.",
+  openGraph: {
+    title: "Series | G Movies App",
+    description:
+      "Browse through popular, top-rated, airing today, and on-the-air TV series. Discover new shows across various genres and stay up-to-date with the latest in television.",
+    url: "https://g-movies-app.netlify.app/series", // Replace with your actual URL
+    images: [
+      {
+        url: "/images/hero.jpg", // Replace with an actual image related to series
+        width: 1920,
+        height: 1080,
+        alt: "Series at G Movies App",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Series | G Movies App",
+    description:
+      "Find your next favorite TV series with G Movies App. Browse through popular, top-rated, and airing shows across different genres.",
+    images: ["/images/hero.jpg"], // Replace with your image URL
+  },
+  alternates: {
+    canonical: "https://g-movies-app.netlify.app/series", // Replace with the actual canonical URL
+  },
+};
 
 interface ISingleSeriesPageProps {
   params: {
