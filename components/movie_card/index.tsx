@@ -21,6 +21,12 @@ export default function MovieCard({ movie }: IMovieCardProps) {
             alt={`Poster for ${movie.title}`}
             fill
             objectFit="cover"
+            priority
+            loading="lazy"
+            quality={80}
+            sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
           />
         </div>
         <div

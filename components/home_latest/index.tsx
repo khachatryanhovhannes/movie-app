@@ -36,6 +36,12 @@ export default async function HomeLatest() {
                 alt={`Poster for ${movie.title}`} // More descriptive alt text for accessibility
                 fill
                 objectFit="cover"
+                priority
+                loading="lazy"
+                quality={80}
+                sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
               />
             </div>
             <div className="flex flex-col justify-between">

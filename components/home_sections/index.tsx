@@ -44,6 +44,12 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
                     alt={`Poster for ${movie.title}`} // Descriptive alt text for better accessibility
                     fill
                     objectFit="cover"
+                    priority
+                    loading="lazy"
+                    quality={80}
+                    sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
                   />
                 </div>
                 <div
@@ -85,6 +91,12 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
                     alt={`Poster for ${ser.name}`} // Descriptive alt text for better accessibility
                     fill
                     objectFit="cover"
+                    priority
+                    loading="lazy"
+                    quality={80}
+                    sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
                   />
                 </div>
                 <div

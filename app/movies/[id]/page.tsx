@@ -28,6 +28,12 @@ export default async function Movie({ params }: IMoviePageProps) {
               alt={`Poster of the movie ${movie.title}`}
               fill
               objectFit="cover"
+              priority
+              loading="lazy"
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
             />
           </div>
           <div className="col-span-2 lg:col-span-3 flex flex-col gap-4">
@@ -95,6 +101,12 @@ export default async function Movie({ params }: IMoviePageProps) {
                   alt={`Poster of the movie ${movie.title}`}
                   fill
                   objectFit="cover"
+                  priority
+                  loading="lazy"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
                 />
               </div>
               <div className="flex flex-col justify-between">
