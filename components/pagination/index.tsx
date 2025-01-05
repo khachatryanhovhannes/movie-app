@@ -16,7 +16,7 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
   const generatePaginationNumbers = (page: number, totalPage: number) => {
     const paginationArray = [];
 
-    for (let i = page - 2; i <= page + 2; i++) {
+    for (let i = +page - 2; i <= +page + 2; i++) {
       if (i < 1) continue;
       if (i > totalPage) break;
       paginationArray.push(i);
@@ -27,45 +27,40 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
 
   const generatedNumbers = generatePaginationNumbers(page, totalPage);
 
-  const getPageLink = (pageNumber: number) => {
-    const url = new URL(href, window.location.origin);
-    url.searchParams.set("page", String(pageNumber));
-    return url.toString();
-  };
-
   return (
     <div className="text-center">
-      <div className="flex items-center justify-center gap-2">
-        {page - 1 >= 1 && (
+      <div className="flex items justify-center gap-2">
+        {/* Previous Page Button */}
+        {+page - 1 >= 1 && (
           <Link
-            href={getPageLink(page - 1)}
+            href={`${href}&page=${+page - 1}`}
             className="text-2xl text-red-600 bg-white inline-block gap-1 p-1 rounded-lg border"
-            aria-label="Previous page"
+            aria-label="Previous Page"
           >
             <MdKeyboardArrowLeft />
           </Link>
         )}
 
+        {/* Pagination Numbers */}
         {generatedNumbers.map((number) => (
           <Link
             key={number}
             className={`${
-              page === number
-                ? "bg-red-600 text-white"
-                : "text-red-600 bg-white"
+              page == number ? "bg-red-600 text-white" : "text-red-600 bg-white"
             } inline-block py-1 px-3 rounded-lg border hover:border-red-600`}
-            href={getPageLink(number)}
-            aria-label={`Page ${number}`}
+            href={`${href}&page=${number}`}
+            aria-current={page === number ? "page" : undefined} // Indicates the current page
           >
             {number}
           </Link>
         ))}
 
-        {page + 1 <= totalPage && (
+        {/* Next Page Button */}
+        {+page + 1 <= totalPage && (
           <Link
-            href={getPageLink(page + 1)}
+            href={`${href}&page=${+page + 1}`}
             className="text-2xl text-red-600 bg-white inline-block gap-1 p-1 rounded-lg border"
-            aria-label="Next page"
+            aria-label="Next Page"
           >
             <MdKeyboardArrowRight />
           </Link>
@@ -74,5 +69,4 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
     </div>
   );
 };
-
 export default Pagination;
