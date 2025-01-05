@@ -29,6 +29,7 @@ export default async function Movies({ searchParams }: IMoviesPageProps) {
                 href={`/movies?genre=${g.id}&page=1`}
                 key={g.id}
                 className={`${genre === g.id ? "text-red-500 font-bold" : ""}`}
+                aria-label={`Filter movies by ${g.name} genre`}
               >
                 {g.name}
               </Link>
@@ -38,7 +39,10 @@ export default async function Movies({ searchParams }: IMoviesPageProps) {
 
         <section className="col-span-1 md:col-span-4">
           <div className="md:flex-row flex-col flex justify-between items-center mb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-bold"
+              aria-live="polite"
+            >
               {distinctive.replace("_", " ").toUpperCase()} MOVIES
             </h2>
             <div className="flex gap-3 mt-3 justify-center md:mt-0 flex-wrap md:flex-nowrap">
@@ -47,24 +51,28 @@ export default async function Movies({ searchParams }: IMoviesPageProps) {
                 bgColor="red"
                 color="white"
                 href="/movies?distinctive=popular"
+                aria-label="Show popular movies"
               />
               <SmallButton
                 text="Top Rated"
                 bgColor="red"
                 color="white"
                 href="/movies?distinctive=top_rated"
+                aria-label="Show top-rated movies"
               />
               <SmallButton
                 text="Now Playing"
                 bgColor="red"
                 color="white"
                 href="/movies?distinctive=now_playing"
+                aria-label="Show movies currently playing"
               />
               <SmallButton
                 text="Upcoming"
                 bgColor="red"
                 color="white"
                 href="/movies?distinctive=upcoming"
+                aria-label="Show upcoming movies"
               />
             </div>
           </div>
