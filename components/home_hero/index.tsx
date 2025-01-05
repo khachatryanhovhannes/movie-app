@@ -43,7 +43,7 @@ export default function HomeHero({ movies, genres }: IHomeHeroProps) {
         >
           <div className="w-full h-full bg-black bg-opacity-40 flex flex-col justify-end pb-5">
             <div className="text-white  py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
-              <div className="flex flex-col sm:flex-row gap-3 justify-center pb-5">
+              <div className="flex items-center flex-col sm:flex-row gap-3 justify-center pb-5">
                 <Link href={`/movies/${movie.id}`}>
                   <BigButton text="Watch Now" icon={null} bgColor="red" />
                 </Link>
