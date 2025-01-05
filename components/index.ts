@@ -2,10 +2,11 @@ import BigButton from "./big_button";
 import Navbar from "./navbar";
 import HomeHero from "./home_hero";
 import HomeLatest from "./home_latest";
-import MovieCard from "./movie_card/index";
-import Pagination from "./pagination/index";
-import SeriesCard from "./series_card/index";
-import AboutSections from "./about_sections/index";
+import MovieCard from "./movie_card";
+import Pagination from "./pagination";
+import SeriesCard from "./series_card";
+import AboutSections from "./about_sections";
+import Footer from "./footer";
 
 export {
   BigButton,
@@ -16,4 +17,5 @@ export {
   Pagination,
   SeriesCard,
   AboutSections,
+  Footer,
 };
