@@ -1,4 +1,35 @@
 import { AboutSections } from "@/components";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | G Movies App",
+  description:
+    "Learn more about G Movies App, our mission, vision, and the journey of creating a platform for movie enthusiasts worldwide.",
+  openGraph: {
+    title: "About Us | G Movies App",
+    description:
+      "Discover G Movies App's story, our passion for cinema, and our goal to connect movie lovers worldwide.",
+    url: "https://g-movies-app.netlify.app/about",
+    images: [
+      {
+        url: "/images/hero.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "G Movies App - About Us",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us | G Movies App",
+    description:
+      "Learn more about G Movies App, a platform built for movie enthusiasts worldwide.",
+    images: ["/images/hero.jpg"],
+  },
+  alternates: {
+    canonical: "https://g-movies-app.netlify.app/about",
+  },
+};
 
 export default function About() {
   return (
