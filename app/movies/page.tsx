@@ -3,6 +3,38 @@ import { getGenres, moviesPageGet } from "@/services/api";
 import Link from "next/link";
 import SmallButton from "../../components/small_button/index";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Movies | G Movies App",
+  description:
+    "Browse a wide selection of movies, including popular, top-rated, now playing, and upcoming titles. Find the perfect movie to watch today.",
+  openGraph: {
+    title: "Movies | G Movies App",
+    description:
+      "Explore the latest movies across various genres and categories like popular, top-rated, and upcoming. Find something for everyone.",
+    url: "https://g-movies-app.netlify.app/movies", // Replace with your actual URL
+    images: [
+      {
+        url: "/images/hero.jpg", // Replace with an actual image related to movies
+        width: 1920,
+        height: 1080,
+        alt: "Movies at G Movies App",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Movies | G Movies App",
+    description:
+      "Browse through popular, top-rated, and upcoming movies at G Movies App. Find the latest and best movies for every mood.",
+    images: ["/images/hero.jpg"], // Replace with your image URL
+  },
+  alternates: {
+    canonical: "https://g-movies-app.netlify.app/movies", // Replace with the actual canonical URL
+  },
+};
+
 interface IMoviesPageProps {
   searchParams: {
     distinctive?: "top_rated" | "popular" | "now_playing" | "upcoming";
