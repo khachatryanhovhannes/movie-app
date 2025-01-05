@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32 text-white">
-      <div className="w-full border-t-2 border-red-400 py-6 flex justify-between">
+      <div className="w-full border-t-2 border-red-400 items-center md:items-stretch py-6 flex flex-col gap-5 md:flex-row justify-between">
         <Logo />
         <div className="flex flex-col items-center">
           <Link href="/movies">Movies</Link>
@@ -39,7 +39,9 @@ export default function Footer() {
       </div>
       <div>
         <p className="text-gray-400 text-center text-sm">
-          <span className="border-t-2 border-red-200 pt-2">© {new Date().getFullYear()} All rights reserved.</span>
+          <span className="border-t-2 border-red-200 pt-2">
+            © {new Date().getFullYear()} All rights reserved.
+          </span>
         </p>
       </div>
     </footer>
