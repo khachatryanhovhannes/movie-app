@@ -8,7 +8,7 @@ export default function AboutSections({
   paragraphs,
 }: IAboutSectionsProps) {
   return (
-    <div className="my-8 px-4">
+    <section className="my-8">
       <h3 className="text-xl font-bold text-center mb-4">{title}</h3>
       {paragraphs.map((paragraph, index) => (
         <p
@@ -17,6 +17,6 @@ export default function AboutSections({
           dangerouslySetInnerHTML={{ __html: paragraph }}
         />
       ))}
-    </div>
+    </section>
   );
 }
