@@ -15,22 +15,33 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
   const { title, type, movies, series, url } = props;
 
   return (
-    <section className=" py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
-      <div className=" pt-8 pb-2 flex justify-between items-end">
-        <h3 className="text-white text-2xl">{title}</h3>
+    <section className="py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
+      <div className="pt-8 pb-2 flex justify-between items-end">
+        <h3 className="text-white text-2xl" id="section-title">
+          {title}
+        </h3>
         <div className="text-red-600 underline underline-offset-4">
-          <Link href={url}>More...</Link>
+          <Link href={url} aria-label={`See more ${title.toLowerCase()}`}>
+            More...
+          </Link>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {movies &&
           movies.map((movie) => (
-            <Link href={`/${type}/${movie.id}`} key={movie.id}>
-              <div className="border-2 border-gray-600 rounded-md p-3">
+            <Link
+              href={`/${type}/${movie.id}`}
+              key={movie.id}
+              aria-label={`Go to ${movie.title}`}
+            >
+              <div
+                className="border-2 border-gray-600 rounded-md p-3"
+                role="listitem" // Explicitly define this as a list item for screen readers
+              >
                 <div className="w-full relative aspect-[2/3]">
                   <Image
                     src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                    alt={movie.title}
+                    alt={`Poster for ${movie.title}`} // Descriptive alt text for better accessibility
                     fill
                     objectFit="cover"
                   />
@@ -48,18 +59,30 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
                     />
                   ))}
                 </div>
-                <div className="py-4 text-white text-md">{movie.title}</div>
+                <div
+                  className="py-4 text-white text-md"
+                  aria-labelledby={`movie-title-${movie.id}`}
+                >
+                  <p id={`movie-title-${movie.id}`}>{movie.title}</p>
+                </div>
               </div>
             </Link>
           ))}
         {series &&
           series.map((ser) => (
-            <Link href={`/${type}/${ser.id}`} key={ser.id}>
-              <div className="border-2 border-gray-600 rounded-md p-3">
+            <Link
+              href={`/${type}/${ser.id}`}
+              key={ser.id}
+              aria-label={`Go to ${ser.name}`}
+            >
+              <div
+                className="border-2 border-gray-600 rounded-md p-3"
+                role="listitem" // Explicitly define this as a list item for screen readers
+              >
                 <div className="w-full relative aspect-[2/3]">
                   <Image
                     src={`https://image.tmdb.org/t/p/original${ser.poster_path}`}
-                    alt={ser.name}
+                    alt={`Poster for ${ser.name}`} // Descriptive alt text for better accessibility
                     fill
                     objectFit="cover"
                   />
@@ -77,7 +100,12 @@ export default function HomeSections({ ...props }: IHomeSectionsProps) {
                     />
                   ))}
                 </div>
-                <div className="py-4 text-white text-md">{ser.name}</div>
+                <div
+                  className="py-4 text-white text-md"
+                  aria-labelledby={`serie-title-${ser.id}`}
+                >
+                  <p id={`serie-title-${ser.id}`}>{ser.name}</p>
+                </div>
               </div>
             </Link>
           ))}
