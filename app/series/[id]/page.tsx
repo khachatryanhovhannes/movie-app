@@ -29,8 +29,6 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
               alt={`Poster of ${movie.name}`}
               fill
               objectFit="cover"
-              priority
-              loading="lazy"
               quality={80}
               sizes="(max-width: 768px) 100vw, 
               (max-width: 1200px) 50vw, 
@@ -105,8 +103,6 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
                   alt={`Poster of ${movie.name}`}
                   fill
                   objectFit="cover"
-                  priority
-                  loading="lazy"
                   quality={80}
                   sizes="(max-width: 768px) 100vw, 
               (max-width: 1200px) 50vw, 

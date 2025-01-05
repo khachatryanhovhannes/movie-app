@@ -28,8 +28,6 @@ export default async function Movie({ params }: IMoviePageProps) {
               alt={`Poster of the movie ${movie.title}`}
               fill
               objectFit="cover"
-              priority
-              loading="lazy"
               quality={80}
               sizes="(max-width: 768px) 100vw, 
               (max-width: 1200px) 50vw, 
@@ -101,8 +99,6 @@ export default async function Movie({ params }: IMoviePageProps) {
                   alt={`Poster of the movie ${movie.title}`}
                   fill
                   objectFit="cover"
-                  priority
-                  loading="lazy"
                   quality={80}
                   sizes="(max-width: 768px) 100vw, 
               (max-width: 1200px) 50vw, 
