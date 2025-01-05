@@ -16,7 +16,7 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
   const generatePaginationNumbers = (page: number, totalPage: number) => {
     const paginationArray = [];
 
-    for (let i = +page - 2; i <= +page + 2; i++) {
+    for (let i = page - 2; i <= page + 2; i++) {
       if (i < 1) continue;
       if (i > totalPage) break;
       paginationArray.push(i);
@@ -27,14 +27,20 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
 
   const generatedNumbers = generatePaginationNumbers(page, totalPage);
 
+  const getPageLink = (pageNumber: number) => {
+    const url = new URL(href, window.location.origin);
+    url.searchParams.set("page", String(pageNumber));
+    return url.toString();
+  };
+
   return (
     <div className="text-center">
-      <div className="flex items justify-center gap-2">
-        {+page - 1 >= 1 && (
+      <div className="flex items-center justify-center gap-2">
+        {page - 1 >= 1 && (
           <Link
-            href={`${href}&page=${+page - 1}`}
-            className="text-2xl text-red-600 bg-white
-            } inline-block gap-1 p-1 rounded-lg border"
+            href={getPageLink(page - 1)}
+            className="text-2xl text-red-600 bg-white inline-block gap-1 p-1 rounded-lg border"
+            aria-label="Previous page"
           >
             <MdKeyboardArrowLeft />
           </Link>
@@ -44,21 +50,22 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
           <Link
             key={number}
             className={`${
-              page == number
+              page === number
                 ? "bg-red-600 text-white"
                 : "text-red-600 bg-white"
             } inline-block py-1 px-3 rounded-lg border hover:border-red-600`}
-            href={`${href}&page=${number}`}
+            href={getPageLink(number)}
+            aria-label={`Page ${number}`}
           >
             {number}
           </Link>
         ))}
 
-        {+page + 1 <= totalPage && (
+        {page + 1 <= totalPage && (
           <Link
-            href={`${href}&page=${+page + 1}`}
-            className="text-2xl text-red-600 bg-white
-            } inline-block gap-1 p-1 rounded-lg border"
+            href={getPageLink(page + 1)}
+            className="text-2xl text-red-600 bg-white inline-block gap-1 p-1 rounded-lg border"
+            aria-label="Next page"
           >
             <MdKeyboardArrowRight />
           </Link>
@@ -67,4 +74,5 @@ const Pagination = ({ length, page, href }: IPaginationProps) => {
     </div>
   );
 };
+
 export default Pagination;
