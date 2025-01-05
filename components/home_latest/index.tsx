@@ -41,7 +41,7 @@ export default async function HomeLatest() {
                 </p>
               </div>
               <div className="text-red-600 underline underline-offset-4">
-                <Link href="">More...</Link>
+                <Link href={`/movies/${movie.id}`}>More...</Link>
               </div>
             </div>
           </div>
