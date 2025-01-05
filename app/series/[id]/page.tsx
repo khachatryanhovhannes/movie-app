@@ -29,6 +29,10 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
               alt={`Poster of ${movie.name}`}
               fill
               objectFit="cover"
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
             />
           </div>
           <div className="col-span-2 lg:col-span-3 flex flex-col gap-4">
@@ -99,6 +103,10 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
                   alt={`Poster of ${movie.name}`}
                   fill
                   objectFit="cover"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
                 />
               </div>
               <div className="flex flex-col justify-between">
