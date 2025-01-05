@@ -23,9 +23,17 @@ export default function Navbar() {
         <Logo />
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-8">
+        <nav
+          className="hidden md:flex gap-8"
+          role="navigation"
+          aria-label="Main navigation"
+        >
           {NAV_ITEMS.map((nav_item) => (
-            <Link href={nav_item.href} key={nav_item.label}>
+            <Link
+              href={nav_item.href}
+              key={nav_item.label}
+              aria-label={nav_item.label}
+            >
               <span
                 className={`${
                   pathname === nav_item.href ? "text-red-500" : ""
@@ -42,30 +50,43 @@ export default function Navbar() {
           aria-label="Open menu"
           onClick={toggleMenu}
           className="md:hidden text-white text-2xl"
+          aria-expanded={isMenuOpen ? "true" : "false"}
+          aria-controls="mobile-menu"
         >
           <HiMenu />
         </button>
       </div>
 
+      {/* Mobile Navigation */}
       <div
+        id="mobile-menu"
         className={`fixed top-0 right-0 z-[100] bg-black w-3/4 h-screen p-8 flex flex-col gap-6 text-white transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "transform translate-x-0" : "transform translate-x-full"
         }`}
+        role="navigation"
+        aria-label="Mobile navigation"
       >
         <div>
           <button
             onClick={toggleMenu}
             className="w-full text-white text-xl font-bold"
+            aria-label="Close menu"
+            aria-expanded={isMenuOpen ? "true" : "false"}
+            aria-controls="mobile-menu"
           >
             <IoClose />
           </button>
         </div>
-        <nav className="h-full flex flex-col items-center gap-4">
+        <nav
+          className="h-full flex flex-col items-center gap-4"
+          aria-label="Mobile menu links"
+        >
           {NAV_ITEMS.map((nav_item) => (
             <Link
               href={nav_item.href}
               key={nav_item.label}
               onClick={toggleMenu}
+              aria-label={`Go to ${nav_item.label}`}
             >
               <span
                 className={`${
