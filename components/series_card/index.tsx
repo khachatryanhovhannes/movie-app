@@ -9,12 +9,15 @@ interface ISeriesCardProps {
 
 export default function SeriesCard({ movie }: ISeriesCardProps) {
   return (
-    <Link href={`/series/${movie.id}`}>
-      <div className="border-2 border-gray-600 rounded-md p-3">
+    <Link
+      href={`/series/${movie.id}`}
+      aria-label={`View details of ${movie.name} series`}
+    >
+      <div className="border-2 border-gray-600 rounded-md p-3" tabIndex={0}>
         <div className="w-full relative aspect-[2/3]">
           <Image
             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-            alt={movie.name}
+            alt={`Poster of ${movie.name}`}
             fill
             objectFit="cover"
           />
