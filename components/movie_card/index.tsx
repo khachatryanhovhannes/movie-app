@@ -8,13 +8,17 @@ interface IMovieCardProps {
 }
 
 export default function MovieCard({ movie }: IMovieCardProps) {
+  const posterUrl = movie.poster_path
+    ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
+    : "/images/placeholder.png"; // Fallback image in case of missing poster
+
   return (
     <Link href={`/movies/${movie.id}`}>
       <div className="border-2 border-gray-600 rounded-md p-3">
         <div className="w-full relative aspect-[2/3]">
           <Image
-            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-            alt={movie.title}
+            src={posterUrl}
+            alt={`Poster for ${movie.title}`}
             fill
             objectFit="cover"
           />
@@ -32,7 +36,9 @@ export default function MovieCard({ movie }: IMovieCardProps) {
             />
           ))}
         </div>
-        <div className="py-4 text-white text-md">{movie.title}</div>
+        <div className="py-4 text-white text-md" aria-label={movie.title}>
+          {movie.title}
+        </div>
       </div>
     </Link>
   );
