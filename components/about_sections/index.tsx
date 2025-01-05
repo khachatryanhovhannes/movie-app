@@ -8,8 +8,10 @@ export default function AboutSections({
   paragraphs,
 }: IAboutSectionsProps) {
   return (
-    <section className="my-8">
-      <h3 className="text-xl font-bold text-center mb-4">{title}</h3>
+    <section className="my-8" aria-labelledby="about-section">
+      <h3 id="about-section" className="text-xl font-bold text-center mb-4">
+        {title}
+      </h3>
       {paragraphs.map((paragraph, index) => (
         <p
           key={index}
