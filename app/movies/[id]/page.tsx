@@ -6,6 +6,38 @@ import Link from "next/link";
 import { BsStar } from "react-icons/bs";
 import { MdCalendarMonth, MdLanguage } from "react-icons/md";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Movies | G Movies App",
+  description:
+    "Browse a wide selection of movies, including popular, top-rated, now playing, and upcoming titles. Find the perfect movie to watch today.",
+  openGraph: {
+    title: "Movies | G Movies App",
+    description:
+      "Explore the latest movies across various genres and categories like popular, top-rated, and upcoming. Find something for everyone.",
+    url: "https://g-movies-app.netlify.app/movies", // Replace with your actual URL
+    images: [
+      {
+        url: "/images/hero.jpg", // Replace with an actual image related to movies
+        width: 1920,
+        height: 1080,
+        alt: "Movies at G Movies App",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Movies | G Movies App",
+    description:
+      "Browse through popular, top-rated, and upcoming movies at G Movies App. Find the latest and best movies for every mood.",
+    images: ["/images/hero.jpg"], // Replace with your image URL
+  },
+  alternates: {
+    canonical: "https://g-movies-app.netlify.app/movies", // Replace with the actual canonical URL
+  },
+};
+
 interface IMoviePageProps {
   params: {
     id: string;
@@ -28,6 +60,10 @@ export default async function Movie({ params }: IMoviePageProps) {
               alt={`Poster of the movie ${movie.title}`}
               fill
               objectFit="cover"
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
             />
           </div>
           <div className="col-span-2 lg:col-span-3 flex flex-col gap-4">
@@ -95,6 +131,10 @@ export default async function Movie({ params }: IMoviePageProps) {
                   alt={`Poster of the movie ${movie.title}`}
                   fill
                   objectFit="cover"
+                  quality={80}
+                  sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
                 />
               </div>
               <div className="flex flex-col justify-between">

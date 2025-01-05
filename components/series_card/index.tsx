@@ -20,6 +20,10 @@ export default function SeriesCard({ movie }: ISeriesCardProps) {
             alt={`Poster of ${movie.name}`}
             fill
             objectFit="cover"
+            quality={80}
+            sizes="(max-width: 768px) 100vw, 
+              (max-width: 1200px) 50vw, 
+              33vw"
           />
         </div>
         <div
