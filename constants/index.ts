@@ -15,6 +15,10 @@ export const NAV_ITEMS = [
     href: "/series",
   },
   {
+    label: "Privacy Policy",
+    href: "/privacy_policy",
+  },
+  {
     label: "About",
     href: "/about",
   },
