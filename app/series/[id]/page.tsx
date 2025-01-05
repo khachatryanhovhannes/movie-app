@@ -23,10 +23,10 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
       <div>
         <h1 className="text-3xl font-bold text-center">{movie.name}</h1>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 my-4">
-          <div className="col-span-2 lg:col-span-1 w-full relative  aspect-[2/3]">
+          <div className="col-span-2 lg:col-span-1 w-full relative aspect-[2/3]">
             <Image
               src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              alt={movie.name}
+              alt={`Poster of ${movie.name}`}
               fill
               objectFit="cover"
             />
@@ -40,6 +40,7 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
                   bgColor="white"
                   key={genre.id}
                   href={`/series?genre=${genre.id}`}
+                  aria-label={`View more ${genre.name} series`}
                 />
               ))}
 
@@ -50,12 +51,12 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
             </div>
             <p className="text-lg">{movie.tagline}</p>
             <p>{movie.overview}</p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 overflow-hidden">
               <div>
                 <span className="font-bold">First Air Date:</span>{" "}
                 {movie.first_air_date}
               </div>
-       
+
               <div>
                 <span className="font-bold">Production Companies:</span>{" "}
                 {movie.production_companies.map((pc) => pc.name).join(", ")}
@@ -66,7 +67,11 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
               </div>
               <div>
                 <span className="font-bold">Homepage:</span>{" "}
-                <Link href={movie.homepage} target="_blank">
+                <Link
+                  href={movie.homepage}
+                  target="_blank"
+                  aria-label="Visit homepage"
+                >
                   {movie.homepage}
                 </Link>
               </div>
@@ -75,9 +80,14 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
         </div>
       </div>
 
-      <section>
-        <h3 className="text-white text-2xl py-3">Recommendations</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+      <section aria-labelledby="recommendations-header">
+        <h3 id="recommendations-header" className="text-white text-2xl py-3">
+          Recommendations
+        </h3>
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"
+          aria-live="polite"
+        >
           {recommendations.map((movie) => (
             <div
               key={movie.id}
@@ -86,7 +96,7 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
               <div className="w-1/3 relative aspect-[2/3]">
                 <Image
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                  alt={movie.name}
+                  alt={`Poster of ${movie.name}`}
                   fill
                   objectFit="cover"
                 />
@@ -103,7 +113,12 @@ export default async function SingleSeries({ params }: ISingleSeriesPageProps) {
                   </p>
                 </div>
                 <div className="text-red-600 underline underline-offset-4">
-                  <Link href={`/series/${movie.id}`}>More...</Link>
+                  <Link
+                    href={`/series/${movie.id}`}
+                    aria-label={`View details of ${movie.name}`}
+                  >
+                    More...
+                  </Link>
                 </div>
               </div>
             </div>

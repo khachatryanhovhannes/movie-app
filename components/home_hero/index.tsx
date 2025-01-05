@@ -5,6 +5,7 @@ import BigButton from "../big_button";
 import { init_genres } from "../../utils/init_genres";
 import SmallButton from "../small_button";
 import { BsCalendarDayFill, BsStar } from "react-icons/bs";
+import Link from "next/link";
 
 interface IHomeHeroProps {
   movies: IMovie[];
@@ -17,7 +18,7 @@ export default function HomeHero({ movies, genres }: IHomeHeroProps) {
       autoplay={true}
       loop={true}
       transition={{ duration: 1 }}
-      className=" w-full"
+      className="w-full"
       navigation={({ setActiveIndex, activeIndex, length }) => (
         <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
           {new Array(length).fill("").map((_, i) => (
@@ -27,6 +28,8 @@ export default function HomeHero({ movies, genres }: IHomeHeroProps) {
                 activeIndex === i ? "w-8 bg-white" : "w-4 bg-white/50"
               }`}
               onClick={() => setActiveIndex(i)}
+              role="button"
+              aria-label={`Slide ${i + 1}`}
             />
           ))}
         </div>
@@ -39,16 +42,21 @@ export default function HomeHero({ movies, genres }: IHomeHeroProps) {
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
           }}
+          aria-label={`Movie backdrop for ${movie.original_title}`}
         >
           <div className="w-full h-full bg-black bg-opacity-40 flex flex-col justify-end pb-5">
-            <div className="text-white  py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
-              <div className="flex flex-col sm:flex-row gap-3 justify-center pb-5">
-                <BigButton text="Watch Now" icon={null} bgColor="red" />
-                <BigButton
-                  text="Watch Later"
-                  icon={null}
-                  bgColor="transparent"
-                />
+            <div className="text-white py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
+              <div className="flex items-center flex-col sm:flex-row gap-3 justify-center pb-5">
+                <Link href={`/movies/${movie.id}`} passHref>
+                  <BigButton text="Watch Now" icon={null} bgColor="red" />
+                </Link>
+                <Link href={`/movies/${movie.id}`} passHref>
+                  <BigButton
+                    text="Watch Later"
+                    icon={null}
+                    bgColor="transparent"
+                  />
+                </Link>
               </div>
               <div className="flex flex-col gap-4">
                 <h4 className="text-2xl md:text-4xl font-bold text-center sm:text-left">
@@ -62,6 +70,7 @@ export default function HomeHero({ movies, genres }: IHomeHeroProps) {
                       bgColor="white"
                       key={genre.id}
                       href={`movies?genre=${genre.id}`}
+                      ariaLabel={`Browse movies in ${genre.name} genre`}
                     />
                   ))}
                   <span className="flex items-center gap-2 text-sm md:text-base">
