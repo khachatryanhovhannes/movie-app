@@ -5,6 +5,7 @@ import BigButton from "../big_button";
 import { init_genres } from "../../utils/init_genres";
 import SmallButton from "../small_button";
 import { BsCalendarDayFill, BsStar } from "react-icons/bs";
+import Link from "next/link";
 
 interface IHomeHeroProps {
   movies: IMovie[];
@@ -43,12 +44,16 @@ export default function HomeHero({ movies, genres }: IHomeHeroProps) {
           <div className="w-full h-full bg-black bg-opacity-40 flex flex-col justify-end pb-5">
             <div className="text-white  py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
               <div className="flex flex-col sm:flex-row gap-3 justify-center pb-5">
-                <BigButton text="Watch Now" icon={null} bgColor="red" />
-                <BigButton
-                  text="Watch Later"
-                  icon={null}
-                  bgColor="transparent"
-                />
+                <Link href={`/movies/${movie.id}`}>
+                  <BigButton text="Watch Now" icon={null} bgColor="red" />
+                </Link>
+                <Link href={`/movies/${movie.id}`}>
+                  <BigButton
+                    text="Watch Later"
+                    icon={null}
+                    bgColor="transparent"
+                  />
+                </Link>
               </div>
               <div className="flex flex-col gap-4">
                 <h4 className="text-2xl md:text-4xl font-bold text-center sm:text-left">
