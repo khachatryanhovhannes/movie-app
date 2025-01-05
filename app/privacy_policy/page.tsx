@@ -2,7 +2,7 @@ import { AboutSections } from "@/components";
 
 export default function PrivacyPolicy() {
   return (
-    <main className="text-white py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32 text-justify	">
+    <main className="text-white py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32 text-justify">
       <h1 className="text-2xl font-bold text-center mb-6">Privacy Policy</h1>
       <p className="text-lg mb-6">
         Welcome to <span className="text-red-500">G Movies App</span>. We are
@@ -14,6 +14,7 @@ export default function PrivacyPolicy() {
         collection and use of information in accordance with this policy.
       </p>
 
+      {/* Privacy Sections */}
       <AboutSections
         title="Information We Collect"
         paragraphs={[
@@ -67,7 +68,7 @@ export default function PrivacyPolicy() {
         title="Contact Us"
         paragraphs={[
           `If you have any questions or concerns about our Privacy Policy or how we handle your data, please contact us at:`,
-          `Email: <a href="mailto:support@gmoviesapp.com" class="text-blue-500">support@gmoviesapp.com</a>`,
+          `Email: <a href="mailto:support@gmoviesapp.com" class="text-blue-500" aria-label="Email support at G Movies App">support@gmoviesapp.com</a>`,
         ]}
       />
     </main>
