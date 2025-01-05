@@ -18,10 +18,12 @@ export default async function Series({ searchParams }: ISeriesPageProps) {
     seriesPageGet({ distinctive, page, genre }),
     getTvGenres(),
   ]);
+
   return (
     <main>
-      <div className="grid grid-cols-5 py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32 text-white">
-        <section className="col-span-1">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 py-5 px-5 md:px-8 lg:px-16 xl:px-24 2xl:px-32 text-white">
+        {/* Genre Section */}
+        <section className="hidden md:block col-span-1">
           <div className="flex flex-col gap-2">
             {genres.map((g) => (
               <Link
@@ -35,12 +37,13 @@ export default async function Series({ searchParams }: ISeriesPageProps) {
           </div>
         </section>
 
-        <section className="col-span-4">
-          <div className="flex justify-between">
-            <h2 className="text-2xl font-bold">
-              {distinctive.replace("_", " ").toUpperCase()} MOVIES
+        {/* Content Section */}
+        <section className="col-span-1 md:col-span-4">
+          <div className="md:flex-row flex-col flex justify-between items-center mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+              {distinctive.replace("_", " ").toUpperCase()} SERIES
             </h2>
-            <div className="flex gap-3">
+            <div className="flex gap-3 mt-3 justify-center md:mt-0 flex-wrap md:flex-nowrap">
               <SmallButton
                 text="Popular"
                 bgColor="red"
@@ -69,14 +72,14 @@ export default async function Series({ searchParams }: ISeriesPageProps) {
           </div>
 
           {series.results.length > 0 ? (
-            <div className="grid grid-cols-4 gap-4 py-4">
-              {series.results.map((movie) => (
-                <SeriesCard key={movie.id} movie={movie} />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-4">
+              {series.results.map((series) => (
+                <SeriesCard key={series.id} movie={series} />
               ))}
             </div>
           ) : (
             <p className="text-center py-4 text-gray-400">
-              No movies found for this genre.
+              No series found for this genre.
             </p>
           )}
 
