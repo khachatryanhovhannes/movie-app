@@ -1,4 +1,35 @@
 import { AboutSections } from "@/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | G Movies App",
+  description:
+    "Read the privacy policy of G Movies App to understand how we collect, use, and protect your personal information. Your privacy is important to us.",
+  openGraph: {
+    title: "Privacy Policy | G Movies App",
+    description:
+      "Explore the privacy practices of G Movies App. Learn about how we protect your personal data and handle your privacy.",
+    url: "https://g-movies-app.netlify.app/privacy_policy", // Replace with your actual URL
+    images: [
+      {
+        url: "/images/hero.jpg", // Replace with an actual image related to privacy
+        width: 1920,
+        height: 1080,
+        alt: "G Movies App Privacy Policy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | G Movies App",
+    description:
+      "Understand how G Movies App collects and protects your data. Your privacy is a top priority for us.",
+    images: ["/images/hero.jpg"], // Replace with your image URL
+  },
+  alternates: {
+    canonical: "https://g-movies-app.netlify.app/privacy_policy", // Replace with the actual canonical URL
+  },
+};
 
 export default function PrivacyPolicy() {
   return (
